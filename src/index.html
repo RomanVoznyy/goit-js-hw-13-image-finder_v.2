@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ImageFinder</title>
+	<link
+		  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		  rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Main field -->
+	<div class="response"></div>
+
+	<!-- Search form -->
+	<form class="search-form" id="search-form">
+		<label class="search">
+			<input
+				   class="search-input"
+				   type="text"
+				   name="query"
+				   autocomplete="off"
+				   placeholder="Search images..." />
+			<button class="search-clear js-clear" type="button" title="Clear"></button>
+		</label>
+	</form>
+
+	<!-- Button "Load more" -->
+	<button class="load-btn" type="button">Load more</button>
+
+	<!-- Popup -->
+	<div class="lightbox js-lightbox">
+		<div class="lightbox-overlay"></div>
+		<div class="lightbox-content">
+			<img class="lightbox-image" src="" alt="" />
+		</div>
+		<button class="lightbox-btn-close js-close" type="button" title="Close"></button>
+	</div>
+
+</body>
+
+</html>
