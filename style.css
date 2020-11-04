@@ -92,6 +92,7 @@ img {
   border-radius: 50%;
   background-color: transparent;
   outline: 0;
+  cursor: pointer;
 }
 
 .search-clear:hover {
