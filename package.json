@@ -1,5 +1,5 @@
 {
-  "name": "goit-js-hw-13-image-finder",
+  "name": "goit-js-hw-13-image-finder_v.2",
   "version": "1.0.0",
   "description": "repository for hw13",
   "main": "postcss.config.js",
@@ -8,21 +8,21 @@
     "dev": "webpack --mode=development",
     "postdev": "npm run server",
     "server": "webpack-dev-server --mode=development",
-    "build": "webpack --mode=production --public-url/goit-js-hw-13-image-finder",
+    "build": "webpack --mode=production --public-url/goit-js-hw-13-image-finder_v.2",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RomanVoznyy/goit-js-hw-13-image-finder.git"
+    "url": "git+https://github.com/RomanVoznyy/goit-js-hw-13-image-finder_v.2.git"
   },
   "keywords": [],
   "author": "RomanVoznyy <roman.voznyy.52@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RomanVoznyy/goit-js-hw-13-image-finder/issues"
+    "url": "https://github.com/RomanVoznyy/goit-js-hw-13-image-finder_v.2/issues"
   },
-  "homepage": "https://github.com/RomanVoznyy/goit-js-hw-13-image-finder#readme",
+  "homepage": "https://github.com/RomanVoznyy/goit-js-hw-13-image-finder_v.2#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
