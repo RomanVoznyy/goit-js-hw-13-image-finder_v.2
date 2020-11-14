@@ -13,8 +13,23 @@ const refs = {
 	observerTarget: document.querySelector(".target")
 }
 let page = 1;
+let totalHits = 0;
 defaults.delay = '2000';
 defaults.width = '500px';
+
+refs.input.addEventListener("input", _.debounce(makeRequest, 500));
+refs.btnClear.addEventListener("click", clearAll);
+refs.output.addEventListener("click", checkClick);
+
+function makeRequest() {
+	if (refs.input.value !== "") {
+		clear();
+		page = 1;
+		observer.observe(refs.observerTarget);
+	} else {
+		clearAll();
+	}
+}
 
 const options = {
 	root: null,
@@ -22,34 +37,20 @@ const options = {
 }
 const observer = new IntersectionObserver(intersectionCallback, options);
 
-refs.input.addEventListener("input", _.debounce(makeRequest, 500));
-refs.btnClear.addEventListener("click", clearAll);
-refs.output.addEventListener("click", checkClick);
-
 function intersectionCallback(entries) {
 	entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			page += 1;
+		if (entry.isIntersecting && refs.observerTarget.textContent === "") {
 			fetchPage(page);
+			page += 1;
 		}
 	});
-}
-
-function makeRequest() {
-	if (refs.input.value !== "") {
-		page = 1;
-		refs.output.innerHTML = "";
-		fetchPage(page);
-		observer.observe(refs.observerTarget);
-	} else {
-		clearAll();
-	}
 }
 
 function fetchPage(newPage) {
 	fetchPictures(refs.input.value, newPage)
 		.then(data => {
 			if (data.totalHits) {
+				totalHits = data.totalHits;
 				renderPage(data.hits);
 			}
 			else {
@@ -62,12 +63,31 @@ function fetchPage(newPage) {
 function renderPage(arr) {
 	const markup = `${arr.reduce((acc, el) => acc + pictureCard(el), "")}`;
 	refs.output.insertAdjacentHTML("beforeend", markup);
+
+	lazyLoad(document.querySelectorAll('img[data-status="new"]'));
+	if (refs.output.childElementCount === totalHits) {
+		refs.observerTarget.textContent = "This is the end of the library";
+	}
+}
+
+function lazyLoad(images) {
+	images.forEach(image => {
+		image.dataset.status = "old";
+		image.setAttribute("src", image.dataset.src);
+	})
+}
+
+function clear() {
+	refs.output.innerHTML = "";
+	observer.unobserve(refs.observerTarget);
+	refs.observerTarget.textContent = "";
 }
 
 function clearAll() {
 	refs.input.value = "";
 	refs.output.innerHTML = "";
 	observer.unobserve(refs.observerTarget);
+	refs.observerTarget.textContent = "";
 }
 
 function checkClick(evt) {

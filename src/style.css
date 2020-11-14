@@ -143,17 +143,18 @@ img {
 /* ------------ Response field styles ----------- */
 
 .gallery {
-  max-width: calc(100% - 20px);
-  margin: 100px auto 10px;
+  max-width: calc(100% - 40px);
+  margin: 100px auto 20px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 40px;
 }
 
 .photo-card {
   border: 1px solid #9aa0a6;
   border-radius: 4px;
+  overflow: hidden;
 
   transform: scale(1);
   transition: transform 250ms var(--timing-function);
@@ -165,7 +166,7 @@ img {
 }
 
 .photo-card img {
-  height: 250px;
+  height: 300px;
   max-width: 100%;
   margin: 0 auto;
   object-fit: cover;
@@ -175,7 +176,7 @@ img {
 .stats {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 8px;
 }
 
@@ -183,60 +184,21 @@ img {
   display: flex;
   align-items: center;
 
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .material-icons {
   margin-right: 5px;
-  font-size: 14px;
+  font-size: 16x;
   color: #1976d2;
 }
 
-/* ------------ Load button styles ----------- */
-.load-btn,
-.lightbox-btn-close {
-  position: fixed;
-  width: 70px;
-  height: 70px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
+.target {
+  margin-left: 20px;
 
   font: inherit;
+  font-style: italic;
   font-weight: 500;
-  border: none;
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-  transform: scale(1);
-
-  color: #ffffff;
-  background-color: rgba(85, 27, 27, 0.6);
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.2);
-
-  transition: background-color 250ms var(--timing-function),
-    transform 250ms var(--timing-function);
-}
-
-.load-btn {
-  bottom: 10px;
-  left: 10px;
-}
-
-.load-btn:hover,
-.lightbox-btn-close:hover {
-  background-color: rgba(85, 27, 27, 0.8);
-  transform: scale(1.05);
-}
-
-.load-btn:focus,
-.lightbox-btn-close:focus {
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  transform: scale(1);
 }
 
 /* ------------ Lightbox styles ----------- */
@@ -285,7 +247,42 @@ img {
 }
 
 .lightbox-btn-close {
+  position: fixed;
+  width: 70px;
+  height: 70px;
   top: 10px;
   right: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+
+  font: inherit;
+  font-weight: 500;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transform: scale(1);
+
+  color: #ffffff;
   background-image: url("./images/icon-close.svg");
+  background-color: rgba(85, 27, 27, 0.6);
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.2);
+
+  transition: background-color 250ms var(--timing-function),
+    transform 250ms var(--timing-function);
+}
+
+.lightbox-btn-close:hover {
+  background-color: rgba(85, 27, 27, 0.8);
+  transform: scale(1.05);
+}
+
+.lightbox-btn-close:focus {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
 }
